@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  go-web-service:
+    image: go-ezview-lite-back-office-service:1.0.0
+    container_name: go-ezview-lite-back-office-service
+    ports:
+      - "8080:8080"
+    volumes:
+      - /home/leon/mls/go-ezview-lite-back-office-service/main:/app/main
+      - /home/leon/mls/go-ezview-lite-back-office-service/.env:/app/.env
+    working_dir: /app
+    env_file:
+      - /app/.env
+    command: ["./main"]

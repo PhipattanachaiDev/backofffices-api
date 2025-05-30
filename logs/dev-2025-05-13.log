@@ -1,0 +1,9 @@
+{"level":"info","method":"GET","path":"/back-office-service/swagger/index.html","ip":"::1","status":200,"duration":0.5073,"time":"2025-05-13T10:26:30+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/swagger/swagger-ui.css","ip":"::1","status":200,"duration":0.5037,"time":"2025-05-13T10:26:30+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/swagger/swagger-ui-standalone-preset.js","ip":"::1","status":200,"duration":0.6204,"time":"2025-05-13T10:26:30+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/swagger/swagger-ui-bundle.js","ip":"::1","status":200,"duration":15.3597,"time":"2025-05-13T10:26:30+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/swagger/doc.json","ip":"::1","status":200,"duration":0.7062,"time":"2025-05-13T10:26:30+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/swagger/favicon-32x32.png","ip":"::1","status":200,"duration":0,"time":"2025-05-13T10:26:30+07:00","message":"Handled request"}
+{"level":"info","method":"POST","path":"/back-office-service/api/v1/login","ip":"::1","status":200,"duration":19.1421,"time":"2025-05-13T10:26:50+07:00","message":"Handled request"}
+{"level":"info","method":"POST","path":"/back-office-service/api/v1/card-reader/search","ip":"::1","status":200,"duration":25.2135,"time":"2025-05-13T10:27:16+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/api/v1/card-reader/brand","ip":"::1","status":200,"duration":9.5318,"time":"2025-05-13T10:27:45+07:00","message":"Handled request"}

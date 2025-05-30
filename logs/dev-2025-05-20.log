@@ -1,0 +1,10 @@
+{"level":"info","method":"GET","path":"/back-office-service/swagger/index.html","ip":"::1","status":200,"duration":0.6282,"time":"2025-05-20T10:22:39+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/swagger/swagger-ui.css","ip":"::1","status":200,"duration":0.5046,"time":"2025-05-20T10:22:39+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/swagger/swagger-ui-standalone-preset.js","ip":"::1","status":200,"duration":4.1698,"time":"2025-05-20T10:22:39+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/swagger/swagger-ui-bundle.js","ip":"::1","status":200,"duration":14.6085,"time":"2025-05-20T10:22:39+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/swagger/doc.json","ip":"::1","status":200,"duration":1.0277,"time":"2025-05-20T10:22:39+07:00","message":"Handled request"}
+{"level":"info","method":"POST","path":"/back-office-service/api/v1/login","ip":"::1","status":200,"duration":40.8328,"time":"2025-05-20T10:23:01+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/api/v1/tracker/brand","ip":"::1","status":200,"duration":21.572,"time":"2025-05-20T10:23:40+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/swagger/favicon-32x32.png","ip":"::1","status":200,"duration":0,"time":"2025-05-20T10:26:33+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/api/v1/gps-brands","ip":"::1","status":200,"duration":66.7269,"time":"2025-05-20T10:26:42+07:00","message":"Handled request"}
+{"level":"info","method":"GET","path":"/back-office-service/api/v1/gps-models","ip":"::1","status":200,"duration":23.318,"time":"2025-05-20T10:26:57+07:00","message":"Handled request"}

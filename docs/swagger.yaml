@@ -1,0 +1,5563 @@
+definitions:
+  authentication.LoginRequest:
+    properties:
+      password:
+        description: |-
+          รหัสผ่านที่ใช้ในการเข้าสู่ระบบ
+          required: true
+        example: password123
+        type: string
+        x-order: "1"
+      username:
+        description: |-
+          ชื่อผู้ใช้ที่ใช้ในการเข้าสู่ระบบ
+          required: true
+        example: johndoe
+        type: string
+        x-order: "0"
+    required:
+    - password
+    - username
+    type: object
+  authentication.LoginResponse:
+    properties:
+      expires_after:
+        description: ระยะเวลาที่โทเค็นจะหมดอายุหลังจากการสร้าง
+        example: 5 minutes
+        type: string
+        x-order: "4"
+      expires_at:
+        description: เวลาที่โทเค็นหมดอายุ
+        example: "2024-07-19T09:43:39Z"
+        type: string
+        x-order: "3"
+      token:
+        description: โทเค็นที่ใช้ในการยืนยันตัวตน
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqb2huX2RvZSIsImV4cCI6MTY2NzQ2OTg4NywiaWF0IjoxNjY3NDY5NzI3fQ.SvJv9_XERK8TSEhK9y7BX34vxIZYz3ndY8bX_MSRZGQ
+        type: string
+        x-order: "2"
+    type: object
+  authentication.RefreshTokenRequest:
+    properties:
+      refresh_token:
+        description: โทเค็นที่ต้องการ Refresh เวลาการใช้งาน
+        example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqb2huX2RvZSIsImV4cCI6MTY2NzQ2OTg4NywiaWF0IjoxNjY3NDY5NzI3fQ.SvJv9_XERK8TSEhK9y7BX34vxIZYz3ndY8bX_MSRZGQ
+        type: string
+        x-order: "0"
+    type: object
+  authentication.RefreshTokenResponse:
+    properties:
+      expires_at:
+        description: เวลาที่โทเค็นหมดอายุ
+        example: "2024-07-19T09:43:39Z"
+        type: string
+        x-order: "2"
+      token:
+        description: โทเค็นที่ใช้ในการยืนยันตัวตน
+        type: string
+        x-order: "1"
+    type: object
+  authentication.RegisterRequest:
+    properties:
+      customer_id:
+        example: 1
+        type: integer
+        x-order: "0"
+      description:
+        example: Customer description
+        type: string
+        x-order: "4"
+      name:
+        example: John Doe
+        type: string
+        x-order: "1"
+      password:
+        example: password123
+        type: string
+        x-order: "3"
+      username:
+        example: johndoe
+        type: string
+        x-order: "2"
+    required:
+    - customer_id
+    - name
+    - password
+    - username
+    type: object
+  battery.EZWBatteryStatusModelResponse:
+    properties:
+      status_id:
+        description: สถานะไอดีของ Battery
+        example: 100001
+        type: integer
+        x-order: "0"
+      status_name:
+        description: ชื่อสถานะของ Battery
+        example: Active
+        type: string
+        x-order: "1"
+    type: object
+  battery.EZWGetBatteryGeneralResponse:
+    properties:
+      battery_id:
+        description: ไอดีของแบตเตอรี่
+        type: integer
+        x-order: "0"
+      remark:
+        description: หมายเหตุ
+        type: string
+        x-order: "4"
+      serial_no:
+        description: หมายเลขซีเรียลนัมเบอร์แบตเตอรี่
+        type: string
+        x-order: "1"
+      status_id:
+        description: ไอดีสถานะแบตเตอรี่
+        type: integer
+        x-order: "2"
+      status_name:
+        description: ชื่อสถานะแบตเตอรี่
+        type: string
+        x-order: "3"
+    type: object
+  battery.EZWInsertBatteryRequest:
+    properties:
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: สำหรับทดสอบ
+        type: string
+        x-order: "3"
+      serial_no:
+        description: |-
+          หมายเลขอุปกรณ์ Battery
+          required: true
+        example: "0"
+        type: string
+        x-order: "1"
+      status_id:
+        description: |-
+          ไอดีสถานะ Battery
+          required: true
+        example: 0
+        type: integer
+        x-order: "2"
+    type: object
+  battery.EZWInsertBatteryResponse:
+    properties:
+      message:
+        description: |-
+          รายละเอียดตอบกลับ
+          required: true
+        example: eZView PLUS
+        type: string
+        x-order: "0"
+    type: object
+  battery.EZWSearchBatteryModelRequest:
+    properties:
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: ทดสอบ
+        type: string
+        x-order: "2"
+      serial_no:
+        description: |-
+          รหัสซีเรียลนัมเบอร์ Battery
+          required: true
+        example: "1"
+        type: string
+        x-order: "0"
+      status_id:
+        description: |-
+          ไอดีสถานะ Battery
+          required: true
+        example: 100001
+        type: integer
+        x-order: "1"
+    type: object
+  battery.EZWSearchBatteryModelResponse:
+    properties:
+      battery_id:
+        description: ไอดีของแบตเตอรี่
+        example: 1
+        type: integer
+        x-order: "0"
+      remark:
+        description: หมายเหตุ
+        example: ทดสอบ
+        type: string
+        x-order: "4"
+      serial_no:
+        description: หมายเลขซีเรียลนัมเบอร์แบตเตอรี่
+        example: "123456"
+        type: string
+        x-order: "1"
+      status_id:
+        description: ไอดีสถานะแบตเตอรี่
+        example: 100001
+        type: integer
+        x-order: "2"
+      status_name:
+        description: ชื่อสถานะแบตเตอรี่
+        example: Active
+        type: string
+        x-order: "3"
+    type: object
+  battery.EZWUpdateBatteryRequest:
+    properties:
+      battery_id:
+        description: |-
+          ไอดี Battery
+          required: true
+        example: 1
+        type: integer
+        x-order: "0"
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: สำหรับทดสอบ
+        type: string
+        x-order: "3"
+      serial_no:
+        description: |-
+          หมายเลขอุปกรณ์ Battery
+          required: true
+        example: "0"
+        type: string
+        x-order: "1"
+      status_id:
+        description: |-
+          ไอดีสถานะ Battery
+          required: true
+        example: 0
+        type: integer
+        x-order: "2"
+    type: object
+  battery.EZWUpdateBatteryResponse:
+    properties:
+      remark:
+        description: |-
+          รายละเอียดตอบกลับ
+          required: true
+        example: eZView PLUS
+        type: string
+        x-order: "0"
+    type: object
+  card_reader.EZWCardReaderBrandResponse:
+    properties:
+      brand_id:
+        description: ไอดีของแบรนด์เครื่องอ่านบัตร
+        example: 1
+        type: integer
+        x-order: "0"
+      brand_name:
+        description: ชื่อแบรนด์เครื่องอ่านบัตร
+        example: BrandX
+        type: string
+        x-order: "1"
+    type: object
+  card_reader.EZWCardReaderGeneralResponse:
+    properties:
+      brand_id:
+        description: หมายเลขเครื่องอ่านบัตร
+        type: integer
+        x-order: "1"
+      brand_name:
+        description: ชื่อแบรนด์เครื่องอ่านบัตร
+        type: string
+        x-order: "2"
+      card_reader_id:
+        description: ไอดีของเครื่องอ่านบัตร
+        type: integer
+        x-order: "0"
+      model_id:
+        description: ไอดีของรุ่นเครื่องอ่านบัตร
+        type: integer
+        x-order: "3"
+      model_name:
+        description: ชื่อรุ่นเครื่องอ่านบัตร
+        type: string
+        x-order: "4"
+      remark:
+        description: หมายเหตุ
+        type: string
+        x-order: "8"
+      serial_no:
+        description: หมายเลขเครื่องอ่านบัตร
+        type: string
+        x-order: "5"
+      status_id:
+        description: ไอดีสถานะของเครื่องอ่านบัตร
+        type: integer
+        x-order: "6"
+      status_name:
+        description: ชื่อสถานะของเครื่องอ่านบัตร
+        type: string
+        x-order: "7"
+    type: object
+  card_reader.EZWCardReaderModelResponse:
+    properties:
+      model_id:
+        description: ไอดีของรุ่นเครื่องอ่านบัตร
+        example: 1
+        type: integer
+        x-order: "0"
+      model_name:
+        description: ชื่อรุ่นเครื่องอ่านบัตร
+        example: ModelY
+        type: string
+        x-order: "1"
+    type: object
+  card_reader.EZWCardReaderStatusResponse:
+    properties:
+      status_id:
+        description: ไอดีของสถานะเครื่องอ่านบัตร
+        example: 1
+        type: integer
+        x-order: "0"
+      status_name:
+        description: ชื่อของสถานะเครื่องอ่านบัตร
+        example: Active
+        type: string
+        x-order: "1"
+    type: object
+  card_reader.EZWInsertCardReaderRequest:
+    properties:
+      brand_id:
+        description: |-
+          ไอดีสถานะ Card Reader
+          required: true
+        example: 0
+        type: integer
+        x-order: "1"
+      model_id:
+        description: |-
+          ไอดีสถานะ Card Reader
+          required: true
+        example: 0
+        type: integer
+        x-order: "2"
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: สำหรับทดสอบ
+        type: string
+        x-order: "4"
+      serial_no:
+        description: |-
+          หมายเลขอุปกรณ์ Card Reader
+          required: true
+        example: "0"
+        type: string
+        x-order: "0"
+      status_id:
+        description: |-
+          ไอดีสถานะ Card Reader
+          required: true
+        example: 0
+        type: integer
+        x-order: "3"
+    type: object
+  card_reader.EZWInsertCardReaderResponse:
+    properties:
+      remark:
+        description: |-
+          รายละเอียดตอบกลับ
+          required: true
+        example: eZView PLUS
+        type: string
+        x-order: "0"
+    type: object
+  card_reader.EZWSearchCardReaderModelRequest:
+    properties:
+      brand_id:
+        description: ไอดีของแบรนด์เครื่องอ่านบัตร
+        example: 1
+        type: integer
+        x-order: "1"
+      model_id:
+        description: ไอดีของรุ่นเครื่องอ่านบัตร
+        example: 1
+        type: integer
+        x-order: "2"
+      remark:
+        description: หมายเหตุเพิ่มเติมสำหรับการค้นหา
+        example: Remark
+        type: string
+        x-order: "4"
+      serial_no:
+        description: หมายเลขเครื่องอ่านบัตร (Serial No)
+        example: CR123456
+        type: string
+        x-order: "0"
+      status_id:
+        description: ไอดีสถานะของเครื่องอ่านบัตร (0, 99, หรือค่าอื่นๆ ตามเงื่อนไข)
+        example: 1
+        type: integer
+        x-order: "3"
+    type: object
+  card_reader.EZWSearchCardReaderModelResponse:
+    properties:
+      brand_id:
+        description: ไอดีของแบรนด์เครื่องอ่านบัตร
+        example: 1
+        type: integer
+        x-order: "2"
+      brand_name:
+        description: ชื่อแบรนด์ของเครื่องอ่านบัตร
+        example: BrandX
+        type: string
+        x-order: "3"
+      card_reader_id:
+        description: ไอดีของเครื่องอ่านบัตร
+        example: 1
+        type: integer
+        x-order: "0"
+      model_id:
+        description: ไอดีของรุ่นเครื่องอ่านบัตร
+        example: 1
+        type: integer
+        x-order: "4"
+      model_name:
+        description: ชื่อรุ่นของเครื่องอ่านบัตร
+        example: ModelY
+        type: string
+        x-order: "5"
+      remark:
+        description: หมายเหตุเพิ่มเติม
+        example: Remark
+        type: string
+        x-order: "7"
+      serial_no:
+        description: หมายเลขเครื่องอ่านบัตร
+        example: CR123456
+        type: string
+        x-order: "1"
+      status_id:
+        description: ไอดีสถานะของเครื่องอ่านบัตร
+        example: 1
+        type: integer
+        x-order: "6"
+    type: object
+  card_reader.EZWUpdateCardReaderRequest:
+    properties:
+      brand_id:
+        description: |-
+          ไอดีสถานะ Card Reader
+          required: true
+        example: 0
+        type: integer
+        x-order: "1"
+      card_reader_id:
+        description: |-
+          ไอดี Card Reader
+          required: true
+        example: 66672455949
+        type: integer
+        x-order: "0"
+      model_id:
+        description: |-
+          ไอดีสถานะ Card Reader
+          required: true
+        example: 0
+        type: integer
+        x-order: "2"
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: สำหรับทดสอบ
+        type: string
+        x-order: "3"
+      serial_no:
+        description: |-
+          หมายเลขอุปกรณ์ Card Reader
+          required: true
+        example: "0"
+        type: string
+        x-order: "1"
+      status_id:
+        description: |-
+          ไอดีสถานะ Card Reader
+          required: true
+        example: 0
+        type: integer
+        x-order: "2"
+    type: object
+  card_reader.EZWUpdateCardReaderResponse:
+    properties:
+      remark:
+        description: |-
+          รายละเอียดตอบกลับ
+          required: true
+        example: eZView PLUS
+        type: string
+        x-order: "0"
+    type: object
+  customers.CreateIndividualCustomerResponse:
+    properties:
+      customer_id:
+        description: |-
+          รหัสลูกค้า
+          example: 1
+        example: 1
+        type: integer
+        x-order: "0"
+    type: object
+  customers.CreateJuristicCustomerResponse:
+    properties:
+      customer_id:
+        description: |-
+          รหัสลูกค้า
+          example: 1
+        example: 1
+        type: integer
+        x-order: "0"
+    type: object
+  gps.CreateGPSRequest:
+    properties:
+      brand_id:
+        example: 136001
+        type: integer
+        x-order: "2"
+      gps_imei:
+        example: "00000001"
+        type: string
+        x-order: "0"
+      model_id:
+        example: 137001
+        type: integer
+        x-order: "3"
+      remark:
+        example: ทดสอบ
+        type: string
+        x-order: "5"
+      serial_no:
+        example: "10000001"
+        type: string
+        x-order: "1"
+      status_id:
+        example: 119002
+        type: integer
+        x-order: "4"
+    type: object
+  gps.CreateGPSResponse:
+    properties:
+      message:
+        example: Create GPS data successfully
+        type: string
+    type: object
+  gps.DistrictResponse:
+    properties:
+      district_id:
+        example: 1
+        type: integer
+      district_name:
+        example: เขต พระนคร
+        type: string
+    type: object
+  gps.EZWGetGpsGeneralByGpsIdResponse:
+    properties:
+      brand_id:
+        type: integer
+      brand_name:
+        type: string
+      gps_imei:
+        type: string
+      model_id:
+        type: integer
+      model_name:
+        type: string
+      remark:
+        type: string
+      serial_no:
+        type: string
+      status_id:
+        type: integer
+      status_name:
+        type: string
+    type: object
+  gps.GPSBrandResponse:
+    properties:
+      brand_id:
+        example: 136001
+        type: integer
+      brand_name:
+        example: Meitrack
+        type: string
+    type: object
+  gps.GPSModelResponse:
+    properties:
+      model_id:
+        example: 137001
+        type: integer
+      model_name:
+        example: T399L
+        type: string
+    type: object
+  gps.GPSRequest:
+    properties:
+      brand_id:
+        description: ID ยี่ห้อ GPS
+        example: 0
+        type: integer
+        x-order: "2"
+      gps_imei:
+        description: ชื่อสินค้า ของ GPS
+        example: ""
+        type: string
+        x-order: "0"
+      model_id:
+        description: ID รุ่น GPS
+        example: 0
+        type: integer
+        x-order: "3"
+      remark:
+        description: รายละเอียด
+        example: ""
+        type: string
+        x-order: "5"
+      serial_no:
+        description: หมายเลขรหัสสินค้า ของ GPS
+        example: ""
+        type: string
+        x-order: "1"
+      status_id:
+        description: ID สถานะ GPS
+        example: 0
+        type: integer
+        x-order: "4"
+    type: object
+  gps.GPSResponse:
+    properties:
+      brand_code:
+        example: GPS-02
+        type: string
+        x-order: "7"
+      brand_name:
+        example: Meitrack
+        type: string
+        x-order: "6"
+      gps_id:
+        example: 1
+        type: integer
+        x-order: "0"
+      gps_imei:
+        example: "863141055492266"
+        type: string
+        x-order: "1"
+      model_code:
+        example: GPS-02-07
+        type: string
+        x-order: "9"
+      model_name:
+        example: T399L
+        type: string
+        x-order: "8"
+      remark:
+        example: สำหรับทดสอบ
+        type: string
+        x-order: "5"
+      serial_no:
+        example: "59624920078"
+        type: string
+        x-order: "2"
+      status_id:
+        example: 119002
+        type: integer
+        x-order: "3"
+      status_name:
+        example: Active
+        type: string
+        x-order: "4"
+    type: object
+  gps.GPSStatusResponse:
+    properties:
+      status_id:
+        example: 119001
+        type: integer
+      status_name:
+        example: Active
+        type: string
+    type: object
+  gps.ProvinceResponse:
+    properties:
+      province_id:
+        example: 1
+        type: integer
+      province_name:
+        example: กรุงเทพมหานคร
+        type: string
+    type: object
+  gps.SubDistrictResponse:
+    properties:
+      sub_district_id:
+        example: 1
+        type: integer
+      sub_district_name:
+        example: แขวง วัดอรุณ
+        type: string
+      zip_code:
+        example: "10200"
+        type: string
+    type: object
+  gps.UpdateGPSRequest:
+    properties:
+      brand_id:
+        example: 136001
+        type: integer
+        x-order: "3"
+      gps_id:
+        example: 27
+        type: integer
+        x-order: "0"
+      gps_imei:
+        example: "864714063600838"
+        type: string
+        x-order: "1"
+      model_id:
+        example: 137001
+        type: integer
+        x-order: "4"
+      remark:
+        example: ทดสอบกับAPI
+        type: string
+        x-order: "6"
+      serial_no:
+        example: "14063600838"
+        type: string
+        x-order: "2"
+      status_id:
+        example: 119002
+        type: integer
+        x-order: "5"
+    type: object
+  gps.UpdateGPSResponse:
+    properties:
+      message:
+        example: Update GPS data successfully
+        type: string
+    type: object
+  gps_antenna.EZWGpsAntennaStatusModelResponse:
+    properties:
+      status_id:
+        description: สถานะไอดีของ Gps Antenna
+        example: 117001
+        type: integer
+        x-order: "0"
+      status_name:
+        description: ชื่อสถานะของ Gps Antenna
+        example: คงอยู่
+        type: string
+        x-order: "1"
+    type: object
+  gps_antenna.EZWInsertGpsAntennaRequest:
+    properties:
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: สำหรับทดสอบ
+        type: string
+        x-order: "3"
+      serial_no:
+        description: |-
+          หมายเลขอุปกรณ์ Gps Antenna
+          required: true
+        example: "0"
+        type: string
+        x-order: "1"
+      status_id:
+        description: |-
+          ไอดีสถานะ Gps Antenna
+          required: true
+        example: 0
+        type: integer
+        x-order: "2"
+    type: object
+  gps_antenna.EZWInsertGpsAntennaResponse:
+    properties:
+      remark:
+        description: |-
+          รายละเอียดตอบกลับ
+          required: true
+        example: eZView PLUS
+        type: string
+        x-order: "0"
+    type: object
+  gps_antenna.EZWSearchGpsAntennaModelRequest:
+    properties:
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: ทดสอบสร้าง
+        type: string
+        x-order: "2"
+      serial_no:
+        description: |-
+          รหัสซีเรียลนัมเบอร์ Gps Antenna
+          required: true
+        example: "1"
+        type: string
+        x-order: "0"
+      status_id:
+        description: |-
+          ไอดีสถานะ Gps Antenna
+          required: true
+        example: 117001
+        type: integer
+        x-order: "1"
+    type: object
+  gps_antenna.EZWSearchGpsAntennaModelResponse:
+    properties:
+      gps_antenna_id:
+        description: ไอดีของ Gps Antenna
+        example: 1
+        type: integer
+        x-order: "0"
+      remark:
+        description: หมายเหตุ
+        example: ทดสอบสร้าง 1
+        type: string
+        x-order: "5"
+      serial_no:
+        description: หมายเลขซีเรียลนัมเบอร์ Gps Antenna
+        example: "1234567890"
+        type: string
+        x-order: "1"
+      status_code:
+        description: รหัสสถานะ Gps Antenna
+        example: ""
+        type: string
+        x-order: "3"
+      status_id:
+        description: ไอดีสถานะ Gps Antenna
+        example: 117001
+        type: integer
+        x-order: "2"
+      status_name:
+        description: ชื่อสถานะ Gps Antenna
+        example: คงอยู่
+        type: string
+        x-order: "4"
+    type: object
+  gps_antenna.EZWUpdateGpsAntennaRequest:
+    properties:
+      gps_antenna_id:
+        description: |-
+          ไอดี Gps Antenna
+          required: true
+        example: 66672455949
+        type: integer
+        x-order: "0"
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: สำหรับทดสอบ
+        type: string
+        x-order: "3"
+      serial_no:
+        description: |-
+          หมายเลขอุปกรณ์ Gps Antenna
+          required: true
+        example: "0"
+        type: string
+        x-order: "1"
+      status_id:
+        description: |-
+          ไอดีสถานะ Gps Antenna
+          required: true
+        example: 0
+        type: integer
+        x-order: "2"
+    type: object
+  gps_antenna.EZWUpdateGpsAntennaResponse:
+    properties:
+      remark:
+        description: |-
+          รายละเอียดตอบกลับ
+          required: true
+        example: eZView PLUS
+        type: string
+        x-order: "0"
+    type: object
+  gps_antenna.GpsAntennaGeneralResponse:
+    properties:
+      gps_antenna_id:
+        description: ไอดีของ Gps Antenna
+        example: 1
+        type: integer
+        x-order: "0"
+      remark:
+        description: หมายเหตุ
+        example: สำหรับทดสอบ
+        type: string
+        x-order: "4"
+      serial_no:
+        description: หมายเลขซีเรียลนัมเบอร์ Gps Antenna
+        example: "123456789012345678901234567890"
+        type: string
+        x-order: "1"
+      status_id:
+        description: ไอดีสถานะ Gps Antenna
+        example: 117001
+        type: integer
+        x-order: "2"
+      status_name:
+        description: รหัสสถานะ Gps Antenna
+        example: คงอยู่
+        type: string
+        x-order: "3"
+    type: object
+  gsm_antenna.EZGsmAntennaGeneralResponse:
+    properties:
+      gsm_antenna_id:
+        description: ไอดี Gsm Antenna
+        type: integer
+        x-order: "0"
+      remark:
+        description: หมายเหตุ
+        type: string
+        x-order: "4"
+      serial_no:
+        description: ซีเรียลนัมเบอร์ Gsm Antenna
+        type: string
+        x-order: "1"
+      status_id:
+        description: ไอดีสถานะ Gsm Antenna
+        type: integer
+        x-order: "2"
+      status_name:
+        description: ชื่อสถานะ Gsm Antenna
+        type: string
+        x-order: "3"
+    type: object
+  gsm_antenna.EZWGsmAntennaStatusModelResponse:
+    properties:
+      status_id:
+        description: สถานะไอดีของ Gsm Antenna
+        example: 120001
+        type: integer
+        x-order: "0"
+      status_name:
+        description: ชื่อสถานะของ Gsm Antenna
+        example: คงอยู่
+        type: string
+        x-order: "1"
+    type: object
+  gsm_antenna.EZWInsertGsmAntennaRequest:
+    properties:
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: สำหรับทดสอบ
+        type: string
+        x-order: "3"
+      serial_no:
+        description: |-
+          หมายเลขอุปกรณ์ Gsm Antenna
+          required: true
+        example: "0"
+        type: string
+        x-order: "1"
+      status_id:
+        description: |-
+          ไอดีสถานะ Gsm Antenna
+          required: true
+        example: 0
+        type: integer
+        x-order: "2"
+    type: object
+  gsm_antenna.EZWInsertGsmAntennaResponse:
+    properties:
+      remark:
+        description: |-
+          รายละเอียดตอบกลับ
+          required: true
+        example: eZView PLUS
+        type: string
+        x-order: "0"
+    type: object
+  gsm_antenna.EZWSearchGsmAntennaModelRequest:
+    properties:
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: ยกเลิก
+        type: string
+        x-order: "2"
+      serial_no:
+        description: |-
+          รหัสซีเรียลนัมเบอร์ Gsm Antenna
+          required: true
+        example: "1421412421"
+        type: string
+        x-order: "0"
+      status_id:
+        description: |-
+          ไอดีสถานะ Gsm Antenna
+          required: true
+        example: 120002
+        type: integer
+        x-order: "1"
+    type: object
+  gsm_antenna.EZWSearchGsmAntennaModelResponse:
+    properties:
+      gsm_antenna_id:
+        description: ไอดีของ Gsm Antenna
+        example: 1
+        type: integer
+        x-order: "0"
+      remark:
+        description: หมายเหตุ
+        example: eZView PLUS
+        type: string
+        x-order: "5"
+      serial_no:
+        description: หมายเลขซีเรียลนัมเบอร์ Gsm Antenna
+        example: "123456789012345678901234567890"
+        type: string
+        x-order: "1"
+      status_code:
+        description: รหัสสถานะ Gsm Antenna
+        example: คงอยู่
+        type: string
+        x-order: "3"
+      status_id:
+        description: ไอดีสถานะ Gsm Antenna
+        example: 120001
+        type: integer
+        x-order: "2"
+      status_name:
+        description: ชื่อสถานะ Gsm Antenna
+        example: Active
+        type: string
+        x-order: "4"
+    type: object
+  gsm_antenna.EZWUpdateGsmAntennaRequest:
+    properties:
+      gsm_antenna_id:
+        description: |-
+          ไอดี Gsm Antenna
+          required: true
+        example: 66672455949
+        type: integer
+        x-order: "0"
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: สำหรับทดสอบ
+        type: string
+        x-order: "3"
+      serial_no:
+        description: |-
+          หมายเลขอุปกรณ์ Gsm Antenna
+          required: true
+        example: "0"
+        type: string
+        x-order: "1"
+      status_id:
+        description: |-
+          ไอดีสถานะ Gsm Antenna
+          required: true
+        example: 0
+        type: integer
+        x-order: "2"
+    type: object
+  gsm_antenna.EZWUpdateGsmAntennaResponse:
+    properties:
+      remark:
+        description: |-
+          รายละเอียดตอบกลับ
+          required: true
+        example: eZView PLUS
+        type: string
+        x-order: "0"
+    type: object
+  responses.BadRequestResponseSwagger:
+    properties:
+      message:
+        description: ข้อความสถานะของ response
+        example: Bad Request
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 400
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: false
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.CreateDataResponseSwagger-customers_CreateIndividualCustomerResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/customers.CreateIndividualCustomerResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: Created
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 201
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.CreateDataResponseSwagger-customers_CreateJuristicCustomerResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/customers.CreateJuristicCustomerResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: Created
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 201
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.InternalServerErrorResponseSwagger:
+    properties:
+      message:
+        description: ข้อความสถานะของ response
+        example: Internal Server Error
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 500
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: false
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.Response:
+    properties:
+      data:
+        x-order: "4"
+      message:
+        type: string
+        x-order: "3"
+      status:
+        type: integer
+        x-order: "1"
+      success:
+        type: boolean
+        x-order: "0"
+      timestamp:
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-array_gps_DistrictResponse:
+    properties:
+      data:
+        description: ข้อมูลที่ต้องการส่งกลับ
+        items:
+          $ref: '#/definitions/gps.DistrictResponse'
+        type: array
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-array_gps_GPSBrandResponse:
+    properties:
+      data:
+        description: ข้อมูลที่ต้องการส่งกลับ
+        items:
+          $ref: '#/definitions/gps.GPSBrandResponse'
+        type: array
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-array_gps_GPSModelResponse:
+    properties:
+      data:
+        description: ข้อมูลที่ต้องการส่งกลับ
+        items:
+          $ref: '#/definitions/gps.GPSModelResponse'
+        type: array
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-array_gps_GPSResponse:
+    properties:
+      data:
+        description: ข้อมูลที่ต้องการส่งกลับ
+        items:
+          $ref: '#/definitions/gps.GPSResponse'
+        type: array
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-array_gps_GPSStatusResponse:
+    properties:
+      data:
+        description: ข้อมูลที่ต้องการส่งกลับ
+        items:
+          $ref: '#/definitions/gps.GPSStatusResponse'
+        type: array
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-array_gps_ProvinceResponse:
+    properties:
+      data:
+        description: ข้อมูลที่ต้องการส่งกลับ
+        items:
+          $ref: '#/definitions/gps.ProvinceResponse'
+        type: array
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-array_gps_SubDistrictResponse:
+    properties:
+      data:
+        description: ข้อมูลที่ต้องการส่งกลับ
+        items:
+          $ref: '#/definitions/gps.SubDistrictResponse'
+        type: array
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-array_trackerbom_BatteryResponse:
+    properties:
+      data:
+        description: ข้อมูลที่ต้องการส่งกลับ
+        items:
+          $ref: '#/definitions/trackerbom.BatteryResponse'
+        type: array
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-array_trackerbom_CardReaderResponse:
+    properties:
+      data:
+        description: ข้อมูลที่ต้องการส่งกลับ
+        items:
+          $ref: '#/definitions/trackerbom.CardReaderResponse'
+        type: array
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-array_trackerbom_GPSResponse:
+    properties:
+      data:
+        description: ข้อมูลที่ต้องการส่งกลับ
+        items:
+          $ref: '#/definitions/trackerbom.GPSResponse'
+        type: array
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-array_trackerbom_GpsAntennaResponse:
+    properties:
+      data:
+        description: ข้อมูลที่ต้องการส่งกลับ
+        items:
+          $ref: '#/definitions/trackerbom.GpsAntennaResponse'
+        type: array
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-array_trackerbom_GsmAntennaResponse:
+    properties:
+      data:
+        description: ข้อมูลที่ต้องการส่งกลับ
+        items:
+          $ref: '#/definitions/trackerbom.GsmAntennaResponse'
+        type: array
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-array_trackerbom_SimResponse:
+    properties:
+      data:
+        description: ข้อมูลที่ต้องการส่งกลับ
+        items:
+          $ref: '#/definitions/trackerbom.SimResponse'
+        type: array
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-authentication_LoginResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/authentication.LoginResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-authentication_RefreshTokenResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/authentication.RefreshTokenResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-battery_EZWBatteryStatusModelResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/battery.EZWBatteryStatusModelResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-battery_EZWGetBatteryGeneralResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/battery.EZWGetBatteryGeneralResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-battery_EZWInsertBatteryResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/battery.EZWInsertBatteryResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-battery_EZWSearchBatteryModelResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/battery.EZWSearchBatteryModelResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-battery_EZWUpdateBatteryResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/battery.EZWUpdateBatteryResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-card_reader_EZWCardReaderBrandResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/card_reader.EZWCardReaderBrandResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-card_reader_EZWCardReaderGeneralResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/card_reader.EZWCardReaderGeneralResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-card_reader_EZWCardReaderModelResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/card_reader.EZWCardReaderModelResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-card_reader_EZWCardReaderStatusResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/card_reader.EZWCardReaderStatusResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-card_reader_EZWInsertCardReaderResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/card_reader.EZWInsertCardReaderResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-card_reader_EZWSearchCardReaderModelResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/card_reader.EZWSearchCardReaderModelResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-card_reader_EZWUpdateCardReaderResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/card_reader.EZWUpdateCardReaderResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-gps_CreateGPSResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/gps.CreateGPSResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-gps_EZWGetGpsGeneralByGpsIdResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/gps.EZWGetGpsGeneralByGpsIdResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-gps_UpdateGPSResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/gps.UpdateGPSResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-gps_antenna_EZWGpsAntennaStatusModelResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/gps_antenna.EZWGpsAntennaStatusModelResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-gps_antenna_EZWInsertGpsAntennaResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/gps_antenna.EZWInsertGpsAntennaResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-gps_antenna_EZWSearchGpsAntennaModelResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/gps_antenna.EZWSearchGpsAntennaModelResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-gps_antenna_EZWUpdateGpsAntennaResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/gps_antenna.EZWUpdateGpsAntennaResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-gps_antenna_GpsAntennaGeneralResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/gps_antenna.GpsAntennaGeneralResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-gsm_antenna_EZGsmAntennaGeneralResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/gsm_antenna.EZGsmAntennaGeneralResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-gsm_antenna_EZWGsmAntennaStatusModelResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/gsm_antenna.EZWGsmAntennaStatusModelResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-gsm_antenna_EZWInsertGsmAntennaResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/gsm_antenna.EZWInsertGsmAntennaResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-gsm_antenna_EZWSearchGsmAntennaModelResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/gsm_antenna.EZWSearchGsmAntennaModelResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-gsm_antenna_EZWUpdateGsmAntennaResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/gsm_antenna.EZWUpdateGsmAntennaResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-sim_EZWGetSimGeneralResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/sim.EZWGetSimGeneralResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-sim_EZWInsertSimRequest:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/sim.EZWInsertSimRequest'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-sim_EZWSearchSimResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/sim.EZWSearchSimResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-sim_EZWSimOperatorModelResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/sim.EZWSimOperatorModelResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-sim_EZWSimStatusModelResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/sim.EZWSimStatusModelResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-sim_EZWUpdateSimResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/sim.EZWUpdateSimResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-tracker_EZWInsertTrackerResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/tracker.EZWInsertTrackerResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-tracker_EZWResponseGetTrackerGeneral:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/tracker.EZWResponseGetTrackerGeneral'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-tracker_EZWSearchTrackerModelResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/tracker.EZWSearchTrackerModelResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-tracker_EZWTrackerBrandResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/tracker.EZWTrackerBrandResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-tracker_EZWTrackerModelResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/tracker.EZWTrackerModelResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-tracker_EZWTrackerStatusResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/tracker.EZWTrackerStatusResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-tracker_EZWUpdateTrackerResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/tracker.EZWUpdateTrackerResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-trackerbom_EZWGetTrackerBomGeneralResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/trackerbom.EZWGetTrackerBomGeneralResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-trackerbom_EZWGetTrackerBomResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/trackerbom.EZWGetTrackerBomResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-trackerbom_EZWInsertTrackerBomResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/trackerbom.EZWInsertTrackerBomResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.SuccessResponseSwagger-trackerbom_EZWUpdateTrackerBomResponse:
+    properties:
+      data:
+        allOf:
+        - $ref: '#/definitions/trackerbom.EZWUpdateTrackerBomResponse'
+        description: ข้อมูลที่ต้องการส่งกลับ
+        x-order: "4"
+      message:
+        description: ข้อความสถานะของ response
+        example: OK
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 200
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: true
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  responses.UnauthorizedResponseSwagger:
+    properties:
+      message:
+        description: ข้อความสถานะของ response
+        example: Unauthorized
+        type: string
+        x-order: "3"
+      status:
+        description: รหัสสถานะของ response
+        example: 401
+        type: integer
+        x-order: "1"
+      success:
+        description: สถานะของ response
+        example: false
+        type: boolean
+        x-order: "0"
+      timestamp:
+        description: เวลาที่ response ถูกสร้างขึ้น
+        example: "2025-01-01T00:00:00.000000000Z"
+        type: string
+        x-order: "2"
+    type: object
+  sim.EZWGetSimGeneralResponse:
+    properties:
+      operator_id:
+        description: ไอดีผู้ให้บริการซิมการ์ด
+        type: integer
+        x-order: "2"
+      operator_name:
+        description: รหัสผู้ให้บริการซิมการ์ด
+        type: string
+        x-order: "3"
+      remark:
+        description: หมายเลขสถานะซิมการ์ด
+        type: string
+        x-order: "6"
+      sim_id:
+        description: ไอดีของซิมการ์ด
+        type: integer
+        x-order: "0"
+      sim_no:
+        description: หมายเลขซิมการ์ด
+        type: string
+        x-order: "1"
+      status_id:
+        description: ไอดีสถานะซิมการ์ด
+        type: integer
+        x-order: "4"
+      status_name:
+        description: รหัสสถานะซิมการ์ด
+        type: string
+        x-order: "5"
+    type: object
+  sim.EZWInsertSimRequest:
+    properties:
+      operator_id:
+        description: |-
+          ไอดีผู้ให้บริการซิม
+          required: true
+        example: 125002
+        type: integer
+        x-order: "1"
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: สำหรับทดสอบใน API
+        type: string
+        x-order: "3"
+      sim_no:
+        description: |-
+          เลขที่ซิมการ์ด
+          required: true
+        example: "66672455949"
+        type: string
+        x-order: "0"
+      status_id:
+        description: |-
+          ไอดีสถานะซิม
+          required: true
+        example: 126002
+        type: integer
+        x-order: "2"
+    type: object
+  sim.EZWSearchSimRequest:
+    properties:
+      operator_id:
+        description: |-
+          ไอดีผู้ให้บริการซิม
+          required: true
+        example: 99
+        type: integer
+        x-order: "1"
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: eZView PLUS
+        type: string
+        x-order: "3"
+      sim_no:
+        description: |-
+          หมายเลขซิมการ์ด
+          required: true
+        example: "66672455949"
+        type: string
+        x-order: "0"
+      status_id:
+        description: |-
+          ไอดีสถานะซิม
+          required: true
+        example: 99
+        type: integer
+        x-order: "2"
+    type: object
+  sim.EZWSearchSimResponse:
+    properties:
+      operator_code:
+        description: รหัสผู้ให้บริการ
+        example: TrueMove
+        type: string
+        x-order: "6"
+      operator_id:
+        description: ไอดีผู้ให้บริการ
+        example: 125001
+        type: integer
+        x-order: "5"
+      operator_name:
+        description: ชื่อผู้ให้บริการ
+        example: TrueMove H
+        type: string
+        x-order: "7"
+      remark:
+        description: หมายเหตุ
+        example: eZView PLUS
+        type: string
+        x-order: "8"
+      sim_id:
+        description: ไอดีของซิมการ์ด
+        example: 1
+        type: integer
+        x-order: "0"
+      sim_no:
+        description: หมายเลขซิมการ์ด
+        example: "66672455949"
+        type: string
+        x-order: "1"
+      status_code:
+        description: รหัสสถานะซิมการ์ด
+        example: Active
+        type: string
+        x-order: "3"
+      status_id:
+        description: ไอดีสถานะซิมการ์ด
+        example: 126002
+        type: integer
+        x-order: "2"
+      status_name:
+        description: ชื่อสถานะซิมการ์ด
+        example: Active
+        type: string
+        x-order: "4"
+    type: object
+  sim.EZWSimOperatorModelResponse:
+    properties:
+      operator_id:
+        description: ประเภทไอดีของผู้ให้บริการซิมการ์ด
+        example: 125001
+        type: integer
+        x-order: "0"
+      operator_name:
+        description: ชื่อประเภทผู้ให้บริการซิมการ์ด
+        example: AIS
+        type: string
+        x-order: "1"
+    type: object
+  sim.EZWSimStatusModelResponse:
+    properties:
+      status_id:
+        description: ประเภทไอดีของสถานะซิมการ์ด
+        example: 126002
+        type: integer
+        x-order: "0"
+      status_name:
+        description: ชื่อประเภทสถานะของซิมการ์ด
+        example: Inactive
+        type: string
+        x-order: "1"
+    type: object
+  sim.EZWUpdateSimRequest:
+    properties:
+      operator_id:
+        description: |-
+          ไอดีผู้ให้บริการซิม
+          required: true
+        example: 125001
+        type: integer
+        x-order: "2"
+      remark:
+        description: |-
+          หมายเหตุ
+          required: true
+        example: สำหรับทดสอบใน API
+        type: string
+        x-order: "4"
+      sim_id:
+        description: |-
+          ไอดีซิมการ์ด
+          required: true
+        example: 1
+        type: integer
+        x-order: "0"
+      sim_no:
+        description: |-
+          หมายเลขซิมการ์ด
+          required: true
+        example: "66672455949"
+        type: string
+        x-order: "1"
+      status_id:
+        description: |-
+          ไอดีสถานะซิม
+          required: true
+        example: 126002
+        type: integer
+        x-order: "3"
+    type: object
+  sim.EZWUpdateSimResponse:
+    properties:
+      remark:
+        description: |-
+          รายละเอียดตอบกลับ
+          required: true
+        example: eZView PLUS
+        type: string
+        x-order: "0"
+    type: object
+  tracker.EZWInsertTrackerRequest:
+    properties:
+      brand_id:
+        example: 146001
+        type: integer
+        x-order: "3"
+      model_id:
+        example: 147002
+        type: integer
+        x-order: "4"
+      remark:
+        example: New tracker
+        type: string
+        x-order: "6"
+      serial_no:
+        example: SN202309010001
+        type: string
+        x-order: "1"
+      status_id:
+        example: 128001
+        type: integer
+        x-order: "5"
+      tracker_bom_id:
+        example: 1
+        type: integer
+        x-order: "2"
+      tracker_code:
+        example: "202309010001"
+        type: string
+        x-order: "0"
+    required:
+    - brand_id
+    - model_id
+    - serial_no
+    - status_id
+    - tracker_bom_id
+    - tracker_code
+    type: object
+  tracker.EZWInsertTrackerResponse:
+    properties:
+      message:
+        example: 'Insert successful: tracker_id = 123'
+        type: string
+    type: object
+  tracker.EZWResponseGetTrackerGeneral:
+    properties:
+      remark:
+        type: string
+      serial_no:
+        type: string
+      status_id:
+        type: integer
+      status_name:
+        type: string
+      tracker_bom_id:
+        type: integer
+      tracker_brand_id:
+        type: integer
+      tracker_brand_name:
+        type: string
+      tracker_code:
+        type: string
+      tracker_model_id:
+        type: integer
+      tracker_model_name:
+        type: string
+    type: object
+  tracker.EZWSearchTrackerModelResponse:
+    properties:
+      remark:
+        description: หมายเหตุ
+        example: "2024"
+        type: string
+        x-order: "10"
+      serial_no:
+        description: หมายเลขซีเรียลนัมเบอร์กล่องติดตาม
+        example: "2024"
+        type: string
+        x-order: "3"
+      status_id:
+        description: ไอดีสถานะกล่องติดตาม
+        example: 2024
+        type: integer
+        x-order: "8"
+      status_name:
+        description: ชื่อสถานะกล่องติดตาม
+        example: "2024"
+        type: string
+        x-order: "9"
+      tracker_bom_id:
+        description: ไอดีรายการวัสดุกล่องติดตาม
+        example: 2024
+        type: integer
+        x-order: "0"
+      tracker_brand_id:
+        description: ไอดียี่ห้อกล่องติดตาม
+        example: 2024
+        type: integer
+        x-order: "6"
+      tracker_brand_name:
+        description: ชื่อยี่ห้อกล่องติดตาม
+        example: "2024"
+        type: string
+        x-order: "7"
+      tracker_code:
+        description: รหัสกล่องติดตาม
+        example: "2024"
+        type: string
+        x-order: "2"
+      tracker_id:
+        description: ไอดีกล่องติดตาม
+        example: 2024
+        type: integer
+        x-order: "1"
+      tracker_model_id:
+        description: ไอดีรุ่นกล่องติดตาม
+        example: 2024
+        type: integer
+        x-order: "4"
+      tracker_model_name:
+        description: ชื่อรุ่นกล่องติดตาม
+        example: "2024"
+        type: string
+        x-order: "5"
+    type: object
+  tracker.EZWSearchTrackerRequest:
+    properties:
+      brand_id:
+        description: ไอดียี่ห้อกล่องติดตาม
+        example: 146001
+        type: integer
+        x-order: "1"
+      model_id:
+        description: ไอดีรุ่นกล่องติดตาม
+        example: 147001
+        type: integer
+        x-order: "2"
+      remark:
+        description: Remark (หมายเหตุ)
+        example: eZView
+        type: string
+        x-order: "4"
+      status_id:
+        description: ไอดีสถานะกล่องติดตาม
+        example: 128001
+        type: integer
+        x-order: "3"
+      tracker_code:
+        description: รหัสกล่องติดตาม
+        example: "2024"
+        type: string
+        x-order: "0"
+    type: object
+  tracker.EZWTrackerBrandResponse:
+    properties:
+      brand_id:
+        description: ไอดียี่ห้อกล่องติดตาม
+        type: integer
+        x-order: "0"
+      brand_name:
+        description: ชื่อยี่ห้อกล่องติดตาม
+        type: string
+        x-order: "1"
+    type: object
+  tracker.EZWTrackerModelResponse:
+    properties:
+      model_id:
+        description: ไอดีรุ่นกล่องติดตาม
+        type: integer
+        x-order: "0"
+      model_name:
+        description: ชื่อรุ่นกล่องติดตาม
+        type: string
+        x-order: "1"
+    type: object
+  tracker.EZWTrackerStatusResponse:
+    properties:
+      status_id:
+        description: ไอดีสถานะกล่องติดตาม
+        type: integer
+        x-order: "0"
+      status_name:
+        description: ชื่อสถานะกล่องติดตาม
+        type: string
+        x-order: "1"
+    type: object
+  tracker.EZWUpdateTrackerRequest:
+    properties:
+      brand_id:
+        description: ไอดียี่ห้อกล่องติดตาม
+        example: 146001
+        type: integer
+        x-order: "4"
+      model_id:
+        description: ไอดีรุ่นกล่องติดตาม
+        example: 147001
+        type: integer
+        x-order: "5"
+      remark:
+        description: หมายเหตุ
+        example: Updated tracker details
+        type: string
+        x-order: "7"
+      serial_no:
+        description: หมายเลขซีเรียลนัมเบอร์กล่องติดตาม
+        example: SN123456
+        type: string
+        x-order: "2"
+      status_id:
+        description: ไอดีสถานะกล่องติดตาม
+        example: 128001
+        type: integer
+        x-order: "6"
+      tracker_bom_id:
+        description: ไอดีกลุ่มอุปกรณ์ติดตาม
+        example: 2
+        type: integer
+        x-order: "3"
+      tracker_code:
+        description: รหัสกล่องติดตาม
+        example: TRK001
+        type: string
+        x-order: "1"
+      tracker_id:
+        description: ไอดีกล่องติดตาม
+        example: 1
+        type: integer
+        x-order: "0"
+    type: object
+  tracker.EZWUpdateTrackerResponse:
+    properties:
+      message:
+        description: หมายเหตุ
+        example: Update successful
+        type: string
+    type: object
+  trackerbom.BatteryResponse:
+    properties:
+      battery_id:
+        type: integer
+        x-order: "0"
+      serial_no:
+        type: string
+        x-order: "1"
+    type: object
+  trackerbom.CardReaderResponse:
+    properties:
+      card_reader_id:
+        type: integer
+        x-order: "0"
+      serial_no:
+        type: string
+        x-order: "1"
+    type: object
+  trackerbom.EZWGetTrackerBomGeneralResponse:
+    properties:
+      battery_id:
+        type: integer
+        x-order: "11"
+      battery_serial_no:
+        type: string
+        x-order: "12"
+      card_reader_id:
+        type: integer
+        x-order: "13"
+      card_reader_serial_no:
+        type: string
+        x-order: "14"
+      gps_antenna_id:
+        type: integer
+        x-order: "5"
+      gps_antenna_serial_no:
+        type: string
+        x-order: "6"
+      gps_id:
+        type: integer
+        x-order: "2"
+      gps_imei:
+        type: string
+        x-order: "3"
+      gps_serial_no:
+        type: string
+        x-order: "4"
+      gsm_antenna_id:
+        type: integer
+        x-order: "7"
+      gsm_antenna_serial_no:
+        type: string
+        x-order: "8"
+      is_active:
+        type: boolean
+        x-order: "15"
+      sim_id:
+        type: integer
+        x-order: "9"
+      sim_no:
+        type: string
+        x-order: "10"
+      tracker_bom_code:
+        example: BOM-001
+        type: string
+        x-order: "1"
+      tracker_bom_id:
+        example: 123
+        type: integer
+        x-order: "0"
+    type: object
+  trackerbom.EZWGetTrackerBomResponse:
+    properties:
+      battery_id:
+        description: ไอดีของแบตเตอรี่
+        type: integer
+        x-order: "16"
+      battery_serial_no:
+        description: หมายเลข S/N ของแบตเตอรี่
+        type: string
+        x-order: "17"
+      card_reader_brand_name:
+        description: ชื่อแบรนด์ของ เครื่องอ่านบัตร
+        type: string
+        x-order: "12"
+      card_reader_id:
+        description: ไอดีของเครื่องอ่านบัตร
+        type: integer
+        x-order: "10"
+      card_reader_model_name:
+        description: ชื่อรุ่นของ เครื่องอ่านบัตร
+        type: string
+        x-order: "13"
+      card_reader_serial_no:
+        description: หมายเลข S/N ของ เครื่องอ่านบัตร
+        type: string
+        x-order: "11"
+      gps_antenna_id:
+        description: ไอดีของ Gps Antenna
+        type: integer
+        x-order: "6"
+      gps_antenna_serial_no:
+        description: หมายเลข S/N ของ Gps Antenna
+        type: string
+        x-order: "7"
+      gps_brand_name:
+        description: ชื่อยี่ห้อ Gps
+        type: string
+        x-order: "4"
+      gps_id:
+        description: ไอดีของ Gps
+        type: integer
+        x-order: "3"
+      gps_model_name:
+        description: ชื่อรุ่น Gps
+        type: string
+        x-order: "5"
+      gsm_antenna_id:
+        description: ไอดีของ GSM Antenna
+        type: integer
+        x-order: "8"
+      gsm_antenna_serial_no:
+        description: หมายเลข S/N ของ Gsm Antenna
+        type: string
+        x-order: "9"
+      sim_id:
+        description: ไอดีของซิมการ์ด
+        type: integer
+        x-order: "14"
+      sim_no:
+        description: หมายเลขของซิมการ์ด
+        type: string
+        x-order: "15"
+      tracker_bom_id:
+        description: ไอดีของ Tracker Bom
+        type: integer
+        x-order: "0"
+      tracker_code:
+        description: หมายเลขอีมี่ของล่องติดตามก
+        type: string
+        x-order: "2"
+      tracker_id:
+        description: ไอดีของล่องติดตาม
+        type: integer
+        x-order: "1"
+    type: object
+  trackerbom.EZWInsertTrackerBomRequest:
+    properties:
+      battery_id:
+        description: ไอดีของแบตเตอรี่
+        example: 6
+        type: integer
+        x-order: "5"
+      card_reader_id:
+        description: ไอดีของ Card Reader
+        example: 4
+        type: integer
+        x-order: "3"
+      gps_antenna_id:
+        description: ไอดีของ Gps Antenna
+        example: 2
+        type: integer
+        x-order: "1"
+      gps_id:
+        description: ไอดีของ Gps
+        example: 1
+        type: integer
+        x-order: "0"
+      gsm_antenna_id:
+        description: ไอดีของ Gsm Antenna
+        example: 3
+        type: integer
+        x-order: "2"
+      sim_id:
+        description: ไอดีของซิมการ์ด
+        example: 5
+        type: integer
+        x-order: "4"
+    type: object
+  trackerbom.EZWInsertTrackerBomResponse:
+    properties:
+      battery_id:
+        description: หมายเหตุ
+        example: สำเร็จ
+        type: string
+        x-order: "0"
+    type: object
+  trackerbom.EZWUpdateTrackerBomRequest:
+    properties:
+      battery_id:
+        type: integer
+        x-order: "5"
+      gps_antenna_id:
+        type: integer
+        x-order: "2"
+      gps_id:
+        type: integer
+        x-order: "1"
+      gsm_antenna_id:
+        type: integer
+        x-order: "3"
+      sim_id:
+        type: integer
+        x-order: "4"
+      tracker_bom_id:
+        type: integer
+        x-order: "0"
+    required:
+    - battery_id
+    - gps_antenna_id
+    - gps_id
+    - gsm_antenna_id
+    - sim_id
+    - tracker_bom_id
+    type: object
+  trackerbom.EZWUpdateTrackerBomResponse:
+    properties:
+      message:
+        type: string
+        x-order: "0"
+    type: object
+  trackerbom.GPSResponse:
+    properties:
+      gps_id:
+        type: integer
+        x-order: "0"
+      gps_imei:
+        type: string
+        x-order: "1"
+      serial_no:
+        type: string
+        x-order: "2"
+    type: object
+  trackerbom.GpsAntennaResponse:
+    properties:
+      gps_antenna_id:
+        type: integer
+        x-order: "0"
+      serial_no:
+        type: string
+        x-order: "1"
+    type: object
+  trackerbom.GsmAntennaResponse:
+    properties:
+      gsm_antenna_id:
+        type: integer
+        x-order: "0"
+      serial_no:
+        type: string
+        x-order: "1"
+    type: object
+  trackerbom.SimResponse:
+    properties:
+      sim_id:
+        type: integer
+        x-order: "0"
+      sim_no:
+        type: string
+        x-order: "1"
+    type: object
+info:
+  contact: {}
+  description: For eZVeiw Lite Back Office Project.
+  title: eZView Lite Back Office API
+  version: "1.0"
+paths:
+  /v1/auth/register/user/customer:
+    post:
+      consumes:
+      - application/json
+      description: |-
+        API นี้ใช้สำหรับการลงทะเบียนผู้ใช้ใหม่สำหรับลูกค้าและคืนค่า JWT token ซึ่ง Response จะมีข้อมูลดังนี้:
+
+        - **token**: JWT token ที่ได้รับจากการลงทะเบียน
+        - **expires_at**: เวลาที่ token หมดอายุ
+        - **expires_after**: ระยะเวลาที่ token หมดอายุหลังจากนี้ (60 นาที)
+
+        Customer ID ได้จาก API /v1/customers/individual หรือ /v1/customers/company
+
+        **หมายเหตุ:** กรุณาใช้ข้อมูลของ Customer ID, User Name และ Password ที่ถูกต้องเพื่อลงทะเบียนผู้ใช้ใหม่
+      parameters:
+      - description: Register Request
+        in: body
+        name: registerRequest
+        required: true
+        schema:
+          $ref: '#/definitions/authentication.RegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: การลงทะเบียนสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-authentication_LoginResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      summary: ลงทะเบียนผู้ใช้ใหม่สำหรับลูกค้า
+      tags:
+      - Authentication
+  /v1/battery/general:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Battery ID
+        in: query
+        name: battery_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-battery_EZWGetBatteryGeneralResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: Get Battery general information
+      tags:
+      - Battery
+  /v1/battery/insert:
+    post:
+      consumes:
+      - application/json
+      description: เพิ่ม Battery ใหม่ลงในระบบ
+      parameters:
+      - description: ข้อมูล Battery ที่ต้องการเพิ่ม
+        in: body
+        name: gsmAntenna
+        required: true
+        schema:
+          $ref: '#/definitions/battery.EZWInsertBatteryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-battery_EZWInsertBatteryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: เพิ่มข้อมูล Battery
+      tags:
+      - Battery
+  /v1/battery/search:
+    post:
+      consumes:
+      - application/json
+      description: รับ JSON และส่งพารามิเตอร์ไปยังฟังก์ชัน ezw_search_battery
+      parameters:
+      - description: Payload สำหรับค้นหา Battery
+        in: body
+        name: searchRequest
+        required: true
+        schema:
+          $ref: '#/definitions/battery.EZWSearchBatteryModelRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ผลลัพธ์การค้นหา Battery
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-battery_EZWSearchBatteryModelResponse'
+        "400":
+          description: ข้อมูลที่ส่งมาไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.Response'
+      security:
+      - Bearer: []
+      summary: ค้นหา Battery
+      tags:
+      - Battery
+  /v1/battery/status:
+    get:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับดึงข้อมูลสถานะแบตเตอรี่จากฐานข้อมูล
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ดึงข้อมูลสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-battery_EZWBatteryStatusModelResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล Battery Status
+      tags:
+      - Battery
+  /v1/battery/update:
+    put:
+      consumes:
+      - application/json
+      description: แก้ไขข้อมูล Battery ที่มีอยู่ในระบบ
+      parameters:
+      - description: ข้อมูล Battery ที่ต้องการอัปเดต
+        in: body
+        name: gsmAntenna
+        required: true
+        schema:
+          $ref: '#/definitions/battery.EZWUpdateBatteryRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-battery_EZWUpdateBatteryResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: แก้ไขข้อมูล Battery
+      tags:
+      - Battery
+  /v1/card-reader/brand:
+    get:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับดึงข้อมูลแบรนด์ของ Card Reader จากฐานข้อมูล
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ดึงข้อมูลแบรนด์ Card Reader สำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-card_reader_EZWCardReaderBrandResponse'
+        "400":
+          description: ข้อมูลที่ส่งมาไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล Card Reader Brand
+      tags:
+      - Card Reader
+  /v1/card-reader/general:
+    get:
+      consumes:
+      - application/json
+      description: call ezw_get_card_reader_general_by_id($1)
+      parameters:
+      - description: Card Reader ID
+        in: query
+        name: card_reader_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-card_reader_EZWCardReaderGeneralResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: Get Card Reader by ID
+      tags:
+      - Card Reader
+  /v1/card-reader/insert:
+    post:
+      consumes:
+      - application/json
+      description: เพิ่ม Card Reader ใหม่ลงในระบบ
+      parameters:
+      - description: ข้อมูล Card Reader ที่ต้องการเพิ่ม
+        in: body
+        name: cardReader
+        required: true
+        schema:
+          $ref: '#/definitions/card_reader.EZWInsertCardReaderRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-card_reader_EZWInsertCardReaderResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: เพิ่มข้อมูล Card Reader
+      tags:
+      - Card Reader
+  /v1/card-reader/model:
+    get:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับดึงข้อมูลรุ่นของ Card Reader โดยใช้ parent_id (ไอดีของแบรนด์)
+      parameters:
+      - description: ไอดีของแบรนด์ (parent_id)
+        in: query
+        name: parent_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ดึงข้อมูลรุ่น Card Reader สำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-card_reader_EZWCardReaderModelResponse'
+        "400":
+          description: ข้อมูลที่ส่งมาไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล Card Reader Model
+      tags:
+      - Card Reader
+  /v1/card-reader/search:
+    post:
+      consumes:
+      - application/json
+      description: รับ JSON และส่งพารามิเตอร์ไปยังฟังก์ชัน ezw_search_card_readers
+      parameters:
+      - description: Payload สำหรับค้นหา Card Reader
+        in: body
+        name: searchRequest
+        required: true
+        schema:
+          $ref: '#/definitions/card_reader.EZWSearchCardReaderModelRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ผลลัพธ์การค้นหา Card Reader
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-card_reader_EZWSearchCardReaderModelResponse'
+        "400":
+          description: ข้อมูลที่ส่งมาไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ค้นหา Card Reader
+      tags:
+      - Card Reader
+  /v1/card-reader/status:
+    get:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับดึงข้อมูลสถานะแบตเตอรี่จากฐานข้อมูล
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ดึงข้อมูลสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-card_reader_EZWCardReaderStatusResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล Card Reader Status
+      tags:
+      - Card Reader
+  /v1/card-reader/update:
+    put:
+      consumes:
+      - application/json
+      description: แก้ไขข้อมูล Card Reader ที่มีอยู่ในระบบ
+      parameters:
+      - description: ข้อมูล Card Reader ที่ต้องการอัปเดต
+        in: body
+        name: cardReader
+        required: true
+        schema:
+          $ref: '#/definitions/card_reader.EZWUpdateCardReaderRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-card_reader_EZWUpdateCardReaderResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: แก้ไขข้อมูล Card Reader
+      tags:
+      - Card Reader
+  /v1/create-gps:
+    post:
+      consumes:
+      - application/json
+      description: |-
+        API นี้ใช้สำหรับสร้างข้อมูล GPS ตามเงื่อนไขที่กำหนด
+
+        - **gps_imei**: หมายเลข IMEI ของ GPS
+        - **serial_no**: หมายเลข Serial ของ GPS
+        - **brand_id**: รหัสยี่ห้อ GPS
+        - **model_id**: รหัสรุ่น GPS
+        - **status_id**: รหัสสถานะ GPS
+        - **remark**: รายละเอียด
+      parameters:
+      - description: Create GPS Request
+        in: body
+        name: createRequest
+        required: true
+        schema:
+          $ref: '#/definitions/gps.CreateGPSRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: การร้องขอสร้างข้อมูล GPS สำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-gps_CreateGPSResponse'
+        "400":
+          description: คำขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: Token ไม่ถูกต้องหรือหมดอายุ
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: สร้างข้อมูล GPS ตามเงื่อนไขที่กำหนด
+      tags:
+      - GPS
+  /v1/customers/individual:
+    post:
+      consumes:
+      - multipart/form-data
+      description: API นี้ใช้สำหรับสร้างข้อมูลลูกค้าบุคคลทั่วไป
+      parameters:
+      - description: First Name
+        in: formData
+        name: first_name
+        required: true
+        type: string
+      - description: Last Name
+        in: formData
+        name: last_name
+        required: true
+        type: string
+      - description: ID Card
+        in: formData
+        name: id_card
+        required: true
+        type: string
+      - description: Phone Number
+        in: formData
+        name: phone_number
+        required: true
+        type: string
+      - description: Address
+        in: formData
+        name: address
+        required: true
+        type: string
+      - description: Sub District ID
+        in: formData
+        name: sub_district_id
+        required: true
+        type: string
+      - description: District ID
+        in: formData
+        name: district_id
+        required: true
+        type: string
+      - description: Province ID
+        in: formData
+        name: province_id
+        required: true
+        type: string
+      - description: Zip Code
+        in: formData
+        name: zip_code
+        required: true
+        type: string
+      - description: Images
+        in: formData
+        name: images
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: สร้างข้อมูลลูกค้าบุคคลทั่วไปสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.CreateDataResponseSwagger-customers_CreateIndividualCustomerResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      summary: สร้างข้อมูลลูกค้าบุคคลทั่วไป
+      tags:
+      - Customers
+  /v1/customers/juristic:
+    post:
+      consumes:
+      - multipart/form-data
+      description: API นี้ใช้สำหรับสร้างข้อมูลลูกค้านิติบุคคล
+      parameters:
+      - description: Juristic Name
+        in: formData
+        name: juristic_name
+        required: true
+        type: string
+      - description: Contact Name
+        in: formData
+        name: contact_name
+        required: true
+        type: string
+      - description: Contact Lastname
+        in: formData
+        name: contact_lastname
+        required: true
+        type: string
+      - description: Contact Position
+        in: formData
+        name: contact_position
+        required: true
+        type: string
+      - description: Tax ID
+        in: formData
+        name: tax_id
+        required: true
+        type: string
+      - description: Phone Number
+        in: formData
+        name: phone_number
+        required: true
+        type: string
+      - description: Address
+        in: formData
+        name: address
+        required: true
+        type: string
+      - description: Sub District ID
+        in: formData
+        name: sub_district_id
+        required: true
+        type: string
+      - description: District ID
+        in: formData
+        name: district_id
+        required: true
+        type: string
+      - description: Province ID
+        in: formData
+        name: province_id
+        required: true
+        type: string
+      - description: Zip Code
+        in: formData
+        name: zip_code
+        required: true
+        type: string
+      - description: Images
+        in: formData
+        name: images
+        required: true
+        type: file
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: สร้างข้อมูลลูกค้านิติบุคคลสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.CreateDataResponseSwagger-customers_CreateJuristicCustomerResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      summary: สร้างข้อมูลลูกค้านิติบุคคล
+      tags:
+      - Customers
+  /v1/districts:
+    get:
+      consumes:
+      - application/json
+      description: |-
+        API นี้ใช้สำหรับดึงรายชื่อเขตหรืออำเภอตามจังหวัดที่กำหนด
+
+        - **provinceId**: รหัสจังหวัด
+      parameters:
+      - default: th
+        description: เลือกภาษา (th หรือ en)
+        enum:
+        - th
+        - en
+        in: query
+        name: lang
+        type: string
+      - description: รหัสจังหวัด
+        in: query
+        name: province_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: การร้องขอข้อมูลเขตหรืออำเภอสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-array_gps_DistrictResponse'
+        "400":
+          description: คำขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: Token ไม่ถูกต้องหรือหมดอายุ
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูลเขตหรืออำเภอตามจังหวัดที่เลือก
+      tags:
+      - Dropdowns
+  /v1/gps-antenna/general:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: GPS‑Antenna ID
+        in: query
+        name: gps_antenna_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-gps_antenna_GpsAntennaGeneralResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: Get GPS‑Antenna general information
+      tags:
+      - Gps Antenna
+  /v1/gps-antenna/insert:
+    post:
+      consumes:
+      - application/json
+      description: เพิ่ม Gps Antenna ใหม่ลงในระบบ
+      parameters:
+      - description: ข้อมูล Gps Antenna ที่ต้องการเพิ่ม
+        in: body
+        name: gsmAntenna
+        required: true
+        schema:
+          $ref: '#/definitions/gps_antenna.EZWInsertGpsAntennaRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-gps_antenna_EZWInsertGpsAntennaResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: เพิ่มข้อมูล Gps Antenna
+      tags:
+      - Gps Antenna
+  /v1/gps-antenna/search:
+    post:
+      consumes:
+      - application/json
+      description: รับ JSON และส่งพารามิเตอร์ไปยังฟังก์ชัน ezw_search_gps_antenna
+      parameters:
+      - description: Payload สำหรับค้นหา Gps Antenna
+        in: body
+        name: searchRequest
+        required: true
+        schema:
+          $ref: '#/definitions/gps_antenna.EZWSearchGpsAntennaModelRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ผลลัพธ์การค้นหา Gps Antenna
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-gps_antenna_EZWSearchGpsAntennaModelResponse'
+        "400":
+          description: ข้อมูลที่ส่งมาไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.Response'
+      security:
+      - Bearer: []
+      summary: ค้นหา Gps Antenna
+      tags:
+      - Gps Antenna
+  /v1/gps-antenna/status:
+    get:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับดึงข้อมูลสถานะแบตเตอรี่จากฐานข้อมูล
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ดึงข้อมูลสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-gps_antenna_EZWGpsAntennaStatusModelResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล GPS Antenna Status
+      tags:
+      - Gps Antenna
+  /v1/gps-antenna/update:
+    put:
+      consumes:
+      - application/json
+      description: แก้ไขข้อมูล Gps Antenna ที่มีอยู่ในระบบ
+      parameters:
+      - description: ข้อมูล Gps Antenna ที่ต้องการอัปเดต
+        in: body
+        name: gsmAntenna
+        required: true
+        schema:
+          $ref: '#/definitions/gps_antenna.EZWUpdateGpsAntennaRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-gps_antenna_EZWUpdateGpsAntennaResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: แก้ไขข้อมูล Gps Antenna
+      tags:
+      - Gps Antenna
+  /v1/gps-brands:
+    get:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับดึงข้อมูลยี่ห้อ GPS ทั้งหมด
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: การร้องขอข้อมูลยี่ห้อ GPS สำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-array_gps_GPSBrandResponse'
+        "401":
+          description: Token ไม่ถูกต้องหรือหมดอายุ
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูลยี่ห้อ GPS ทั้งหมด
+      tags:
+      - DropdownsGPS
+  /v1/gps-models:
+    get:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับดึงข้อมูลรุ่น GPS ตามยี่ห้อที่กำหนด
+      parameters:
+      - description: รหัสยี่ห้อ GPS
+        in: query
+        name: type_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: การร้องขอข้อมูลรุ่น GPS สำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-array_gps_GPSModelResponse'
+        "400":
+          description: คำขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: Token ไม่ถูกต้องหรือหมดอายุ
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูลรุ่น GPS ตามยี่ห้อที่เลือก
+      tags:
+      - DropdownsGPS
+  /v1/gps-status:
+    get:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับดึงข้อมูลสถานะ GPS ทั้งหมด
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: การร้องขอข้อมูลสถานะ GPS สำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-array_gps_GPSStatusResponse'
+        "401":
+          description: Token ไม่ถูกต้องหรือหมดอายุ
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูลสถานะ GPS ทั้งหมด
+      tags:
+      - GPS
+  /v1/gps/general:
+    get:
+      consumes:
+      - application/json
+      description: เรียกฟังก์ชัน ezw_get_gps_general_by_gps_id
+      parameters:
+      - description: GPS ID
+        in: query
+        name: gps_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-gps_EZWGetGpsGeneralByGpsIdResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล GPS ตาม gps_id
+      tags:
+      - GPS
+  /v1/gsm-antenna/general:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: GSM‑Antenna ID
+        in: query
+        name: gsm_antenna_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-gsm_antenna_EZGsmAntennaGeneralResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: Get GSM‑Antenna general information
+      tags:
+      - Gsm Antenna
+  /v1/gsm-antenna/insert:
+    post:
+      consumes:
+      - application/json
+      description: เพิ่ม Gsm Antenna ใหม่ลงในระบบ
+      parameters:
+      - description: ข้อมูล Gsm Antenna ที่ต้องการเพิ่ม
+        in: body
+        name: gsmAntenna
+        required: true
+        schema:
+          $ref: '#/definitions/gsm_antenna.EZWInsertGsmAntennaRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-gsm_antenna_EZWInsertGsmAntennaResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: เพิ่มข้อมูล Gsm Antenna
+      tags:
+      - Gsm Antenna
+  /v1/gsm-antenna/search:
+    post:
+      consumes:
+      - application/json
+      description: รับ JSON และส่งพารามิเตอร์ไปยังฟังก์ชัน ezw_search_gsm_antenna
+      parameters:
+      - description: Payload สำหรับค้นหา Gsm Antenna
+        in: body
+        name: searchRequest
+        required: true
+        schema:
+          $ref: '#/definitions/gsm_antenna.EZWSearchGsmAntennaModelRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ผลลัพธ์การค้นหา Gsm Antenna
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-gsm_antenna_EZWSearchGsmAntennaModelResponse'
+        "400":
+          description: ข้อมูลที่ส่งมาไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.Response'
+      security:
+      - Bearer: []
+      summary: ค้นหา Gsm Antenna
+      tags:
+      - Gsm Antenna
+  /v1/gsm-antenna/status:
+    get:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับดึงข้อมูลสถานะแบตเตอรี่จากฐานข้อมูล
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ดึงข้อมูลสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-gsm_antenna_EZWGsmAntennaStatusModelResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล Gsm Antenna Status
+      tags:
+      - Gsm Antenna
+  /v1/gsm-antenna/update:
+    put:
+      consumes:
+      - application/json
+      description: แก้ไขข้อมูล Gsm Antenna ที่มีอยู่ในระบบ
+      parameters:
+      - description: ข้อมูล Gsm Antenna ที่ต้องการอัปเดต
+        in: body
+        name: gsmAntenna
+        required: true
+        schema:
+          $ref: '#/definitions/gsm_antenna.EZWUpdateGsmAntennaRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-gsm_antenna_EZWUpdateGsmAntennaResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: แก้ไขข้อมูล Gsm Antenna
+      tags:
+      - Gsm Antenna
+  /v1/login:
+    post:
+      consumes:
+      - application/json
+      description: |-
+        API นี้ใช้สำหรับการเข้าสู่ระบบของผู้ใช้และคืนค่า JWT token ซึ่ง Response จะมีข้อมูลดังนี้:
+
+        - **token**: JWT token ที่ได้รับจากการเข้าสู่ระบบ
+        - **expires_at**: เวลาที่ token หมดอายุ
+        - **expires_after**: ระยะเวลาที่ token หมดอายุหลังจากนี้ (60 นาที)
+
+        **หมายเหตุ:** กรุณาใช้ข้อมูลของ User Name และ Password ที่ถูกต้องเพื่อรับ Token ในการใช้งาน API อื่น ๆ
+      parameters:
+      - description: Login Request
+        in: body
+        name: loginRequest
+        required: true
+        schema:
+          $ref: '#/definitions/authentication.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: การเข้าสู่ระบบสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-authentication_LoginResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      summary: เข้าสู่ระบบ
+      tags:
+      - Authentication
+  /v1/provinces:
+    get:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับดึงรายชื่อจังหวัดตามภาษาที่กำหนด (th หรือ en)
+      parameters:
+      - default: th
+        description: เลือกภาษา (th หรือ en)
+        enum:
+        - th
+        - en
+        in: query
+        name: lang
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: การร้องขอข้อมูลจังหวัดสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-array_gps_ProvinceResponse'
+        "401":
+          description: Token ไม่ถูกต้องหรือหมดอายุ
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูลจังหวัดตามภาษาที่เลือก
+      tags:
+      - Dropdowns
+  /v1/refresh-token:
+    post:
+      consumes:
+      - application/json
+      description: |
+        API นี้ใช้สำหรับรีเฟรช JWT token โดยใช้ Refresh token ที่ได้รับจากการเข้าสู่ระบบเพื่อสร้าง Access token ใหม่ ซึ่ง Response จะมีข้อมูลดังนี้:
+
+        - **token**: JWT token ที่ได้รับจากการรีเฟรช
+        - **expires_at**: เวลาที่ token หมดอายุ
+      parameters:
+      - description: Refresh Token Request
+        in: body
+        name: refreshToken
+        required: true
+        schema:
+          $ref: '#/definitions/authentication.RefreshTokenRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: การรีเฟรช Token สำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-authentication_RefreshTokenResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      summary: รีเฟรช JWT token
+      tags:
+      - Authentication
+  /v1/search-gps:
+    post:
+      consumes:
+      - application/json
+      description: |-
+        API นี้ใช้สำหรับค้นหาข้อมูล GPS ตามเงื่อนไขที่กำหนด
+
+        - **s_gps_imei**: ชื่อสินค้า ของ GPS
+        - **s_serial_no**: หมายเลขรหัสสินค้า ของ GPS
+        - **s_brand_id**:  ID ยี่ห้อ GPS
+        - **s_model_id**: ID รุ่น GPS
+        - **s_status_id**: ID สถานะ GPS
+        - **s_remark**: รายละเอียด
+      parameters:
+      - description: Search Request
+        in: body
+        name: searchRequest
+        required: true
+        schema:
+          $ref: '#/definitions/gps.GPSRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: การร้องขอข้อมูล GPS สำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-array_gps_GPSResponse'
+        "400":
+          description: คำขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: Token ไม่ถูกต้องหรือหมดอายุ
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ค้นหาข้อมูล GPS ตามเงื่อนไขที่กำหนด
+      tags:
+      - GPS
+  /v1/sim/general:
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: SIM ID
+        in: query
+        name: sim_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-sim_EZWGetSimGeneralResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: Get SIM general information
+      tags:
+      - Sim
+  /v1/sim/insert:
+    post:
+      consumes:
+      - application/json
+      description: เพิ่ม SIM ใหม่ลงฐานข้อมูล
+      parameters:
+      - description: ข้อมูล SIM ที่ต้องการเพิ่ม
+        in: body
+        name: sim
+        required: true
+        schema:
+          $ref: '#/definitions/sim.EZWInsertSimRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: เพิ่มข้อมูล SIM สำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-sim_EZWInsertSimRequest'
+        "400":
+          description: ข้อมูลที่ส่งมาไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: เพิ่มข้อมูล SIM
+      tags:
+      - Sim
+  /v1/sim/operator:
+    get:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับดึงข้อมูลสถานะซิมการ์ดจากฐานข้อมูล
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ดึงข้อมูลสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-sim_EZWSimOperatorModelResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล Sim Operator
+      tags:
+      - Sim
+  /v1/sim/search:
+    post:
+      consumes:
+      - application/json
+      description: รับ JSON และส่งพารามิเตอร์ไปยังฟังก์ชัน ezw_search_sim
+      parameters:
+      - description: Payload สำหรับค้นหา SIM
+        in: body
+        name: searchRequest
+        required: true
+        schema:
+          $ref: '#/definitions/sim.EZWSearchSimRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: ผลลัพธ์การค้นหา SIM
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-sim_EZWSearchSimResponse'
+        "400":
+          description: ข้อมูลที่ส่งมาไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.Response'
+      security:
+      - Bearer: []
+      summary: ค้นหา SIM
+      tags:
+      - Sim
+  /v1/sim/status:
+    get:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับดึงข้อมูลสถานะซิมการ์ดจากฐานข้อมูล
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ดึงข้อมูลสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-sim_EZWSimStatusModelResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล Sim Status
+      tags:
+      - Sim
+  /v1/sim/update:
+    put:
+      consumes:
+      - application/json
+      description: อัปเดตข้อมูล SIM ที่มีอยู่ในฐานข้อมูล
+      parameters:
+      - description: ข้อมูล SIM ที่ต้องการอัปเดต
+        in: body
+        name: sim
+        required: true
+        schema:
+          $ref: '#/definitions/sim.EZWUpdateSimRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: อัปเดตข้อมูล SIM สำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-sim_EZWUpdateSimResponse'
+        "400":
+          description: ข้อมูลที่ส่งมาไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: แก้ไขข้อมูล SIM
+      tags:
+      - Sim
+  /v1/subdistricts:
+    get:
+      consumes:
+      - application/json
+      description: |-
+        API นี้ใช้สำหรับดึงรายชื่อตำบลหรือแขวงตามเขตหรืออำเภอที่กำหนด
+
+        - **district_id**: รหัสเขตหรืออำเภอ
+      parameters:
+      - default: th
+        description: เลือกภาษา (th หรือ en)
+        enum:
+        - th
+        - en
+        in: query
+        name: lang
+        type: string
+      - description: รหัสเขตหรืออำเภอ
+        in: query
+        name: district_id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: การร้องขอข้อมูลตำบลหรือแขวงสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-array_gps_SubDistrictResponse'
+        "400":
+          description: คำขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: Token ไม่ถูกต้องหรือหมดอายุ
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูลตำบลหรือแขวงตามเขตหรืออำเภอที่เลือก
+      tags:
+      - Dropdowns
+  /v1/tracker-bom/battery:
+    get:
+      consumes:
+      - application/json
+      description: เรียกฟังก์ชัน ezw_get_battery()
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-array_trackerbom_BatteryResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล Battery
+      tags:
+      - Tracker Bom
+  /v1/tracker-bom/card-reader:
+    get:
+      consumes:
+      - application/json
+      description: เรียกฟังก์ชัน ezw_get_card_reader()
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-array_trackerbom_CardReaderResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล Card Reader
+      tags:
+      - Tracker Bom
+  /v1/tracker-bom/general:
+    get:
+      consumes:
+      - application/json
+      description: เรียกฟังก์ชัน ezw_get_tracker_bom_general_by_tracker_bom_id(p_tracker_bom_id)
+      parameters:
+      - description: Tracker BOM ID
+        in: query
+        name: tracker_bom_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-trackerbom_EZWGetTrackerBomGeneralResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล Tracker BOM
+      tags:
+      - Tracker Bom
+  /v1/tracker-bom/gps:
+    get:
+      consumes:
+      - application/json
+      description: เรียกฟังก์ชัน ezw_get_gps()
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-array_trackerbom_GPSResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล GPS
+      tags:
+      - Tracker Bom
+  /v1/tracker-bom/gps-antenna:
+    get:
+      consumes:
+      - application/json
+      description: เรียกฟังก์ชัน ezw_get_gps_antenna()
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-array_trackerbom_GpsAntennaResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล Gps Antenna
+      tags:
+      - Tracker Bom
+  /v1/tracker-bom/gsm-antenna:
+    get:
+      consumes:
+      - application/json
+      description: เรียกฟังก์ชัน ezw_get_gsm_antenna()
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-array_trackerbom_GsmAntennaResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล GSM Antenna
+      tags:
+      - Tracker Bom
+  /v1/tracker-bom/insert:
+    post:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับ Insert ข้อมูล Tracker BOM
+      parameters:
+      - description: Payload สำหรับบันทึก Tracker BOM
+        in: body
+        name: payload
+        required: true
+        schema:
+          $ref: '#/definitions/trackerbom.EZWInsertTrackerBomRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: บันทึกข้อมูลสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-trackerbom_EZWInsertTrackerBomResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: บันทึกข้อมูล Tracker BOM
+      tags:
+      - Tracker Bom
+  /v1/tracker-bom/master:
+    get:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับดึงข้อมูล Tracker BOM จากฐานข้อมูล
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ดึงข้อมูลสำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-trackerbom_EZWGetTrackerBomResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล Tracker BOM
+      tags:
+      - Tracker Bom
+  /v1/tracker-bom/sim:
+    get:
+      consumes:
+      - application/json
+      description: เรียกฟังก์ชัน ezw_get_sim()
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-array_trackerbom_SimResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล SIM
+      tags:
+      - Tracker Bom
+  /v1/tracker-bom/update:
+    put:
+      consumes:
+      - application/json
+      description: API สำหรับ Update ข้อมูล Tracker BOM
+      parameters:
+      - description: Tracker BOM Payload
+        in: body
+        name: TrackerBom
+        required: true
+        schema:
+          $ref: '#/definitions/trackerbom.EZWUpdateTrackerBomRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-trackerbom_EZWUpdateTrackerBomResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: แก้ไขข้อมูล Tracker BOM
+      tags:
+      - Tracker Bom
+  /v1/tracker/brand:
+    get:
+      consumes:
+      - application/json
+      description: ดึงข้อมูล Brand (category_id=146) จากระบบ
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-tracker_EZWTrackerBrandResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึง Tracker Brand
+      tags:
+      - Tracker
+  /v1/tracker/general:
+    get:
+      consumes:
+      - application/json
+      description: เรียกฟังก์ชัน ezw_get_tracker_general_by_tracker_id
+      parameters:
+      - description: Tracker ID
+        in: query
+        name: tracker_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-tracker_EZWResponseGetTrackerGeneral'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึงข้อมูล Tracker ตาม tracker_id
+      tags:
+      - Tracker
+  /v1/tracker/insert:
+    post:
+      consumes:
+      - application/json
+      description: API สำหรับ Insert ข้อมูล Tracker
+      parameters:
+      - description: Payload สำหรับ Insert Tracker
+        in: body
+        name: EZWInsertTrackerRequest
+        required: true
+        schema:
+          $ref: '#/definitions/tracker.EZWInsertTrackerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Insert successful
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-tracker_EZWInsertTrackerResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: สร้าง Tracker ใหม่
+      tags:
+      - Tracker
+  /v1/tracker/model:
+    get:
+      consumes:
+      - application/json
+      description: ดึงข้อมูล Model ของ Tracker ที่มี parent เป็น brand_id
+      parameters:
+      - description: Brand ID
+        in: query
+        name: parent_id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-tracker_EZWTrackerModelResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึง Tracker Model ตาม brand (parent_id)
+      tags:
+      - Tracker
+  /v1/tracker/search:
+    post:
+      consumes:
+      - application/json
+      description: API สำหรับค้นหา Tracker ตามเงื่อนไข
+      parameters:
+      - description: Payload สำหรับค้นหา Tracker
+        in: body
+        name: EZWSearchTrackerRequest
+        required: true
+        schema:
+          $ref: '#/definitions/tracker.EZWSearchTrackerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-tracker_EZWSearchTrackerModelResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ค้นหา Tracker
+      tags:
+      - Tracker
+  /v1/tracker/status:
+    get:
+      consumes:
+      - application/json
+      description: ดึงข้อมูลสถานะ Tracker (category_id=128) จากระบบ
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-tracker_EZWTrackerStatusResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: ดึง Tracker Status
+      tags:
+      - Tracker
+  /v1/tracker/update:
+    put:
+      consumes:
+      - application/json
+      description: API นี้ใช้สำหรับแก้ไขข้อมูล Tracker ในระบบ
+      parameters:
+      - description: Payload สำหรับแก้ไขข้อมูล Tracker
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/tracker.EZWUpdateTrackerRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: อัปเดตข้อมูล Tracker สำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-tracker_EZWUpdateTrackerResponse'
+        "400":
+          description: การร้องขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: ข้อมูลเข้าสู่ระบบไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: แก้ไขข้อมูล Tracker
+      tags:
+      - Tracker
+  /v1/update-gps:
+    put:
+      consumes:
+      - application/json
+      description: |-
+        API นี้ใช้สำหรับอัพเดทข้อมูล GPS ตามเงื่อนไขที่กำหนด
+
+        - **gps_id**: รหัส GPS
+        - **gps_imei**: หมายเลข IMEI ของ GPS
+        - **serial_no**: หมายเลข Serial ของ GPS
+        - **brand_id**: รหัสยี่ห้อ GPS
+        - **model_id**: รหัสรุ่น GPS
+        - **status_id**: รหัสสถานะ GPS
+        - **remark**: รายละเอียด
+      parameters:
+      - description: Update Request
+        in: body
+        name: updateRequest
+        required: true
+        schema:
+          $ref: '#/definitions/gps.UpdateGPSRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: การร้องขออัพเดทข้อมูล GPS สำเร็จ
+          schema:
+            $ref: '#/definitions/responses.SuccessResponseSwagger-gps_UpdateGPSResponse'
+        "400":
+          description: คำขอไม่ถูกต้อง
+          schema:
+            $ref: '#/definitions/responses.BadRequestResponseSwagger'
+        "401":
+          description: Token ไม่ถูกต้องหรือหมดอายุ
+          schema:
+            $ref: '#/definitions/responses.UnauthorizedResponseSwagger'
+        "500":
+          description: ข้อผิดพลาดภายในเซิร์ฟเวอร์
+          schema:
+            $ref: '#/definitions/responses.InternalServerErrorResponseSwagger'
+      security:
+      - Bearer: []
+      summary: อัพเดทข้อมูล GPS ตามเงื่อนไขที่กำหนด
+      tags:
+      - GPS
+securityDefinitions:
+  Bearer:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
